@@ -61,6 +61,7 @@ public class TacherView extends JFrame {
 	private JTextField assignmentIdGrade;
 	private JTextField studentIdGrade;
 	private JTextField grade;
+	private final JFrame me;
 
 	
 	private static java.sql.Date convertUtilToSql(java.util.Date uDate) {
@@ -101,6 +102,8 @@ public class TacherView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		me = this;
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
@@ -912,6 +915,25 @@ public class TacherView extends JFrame {
 		btnGetGrades.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnGetGrades.setBounds(486, 369, 122, 23);
 		panel_2.add(btnGetGrades);
+		
+		JPanel panel_3 = new JPanel();
+		tabbedPane.addTab("Logout", null, panel_3, null);
+		panel_3.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Log out");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				me.setVisible(false);
+				me.dispose();
+				LoginView lv = new LoginView();
+				lv.getFrame().setVisible(true);
+				
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 38));
+		btnNewButton.setBounds(197, 195, 319, 74);
+		panel_3.add(btnNewButton);
 		
 	}
 }

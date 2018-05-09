@@ -133,8 +133,12 @@ public class LoginView {
 						Long id = loggedStudent.getStudentId();
 						
 						try {
-							StudentView frame = new StudentView(id);
-							frame.setVisible(true);
+							StudentView sv = new StudentView(id);
+							sv.setVisible(true);
+							
+							frame.setVisible(false);
+							frame.dispose();
+							
 							
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -144,8 +148,13 @@ public class LoginView {
 					} else {
 						
 						try {
-							TacherView frame = new TacherView();
-							frame.setVisible(true);
+							TacherView tv = new TacherView();
+							tv.setVisible(true);
+							
+							frame.setVisible(false);
+							frame.dispose();
+							
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -176,4 +185,11 @@ public class LoginView {
 		btnRegister.setBounds(310, 247, 162, 45);
 		frame.getContentPane().add(btnRegister);
 	}
+	
+	public JFrame getFrame() {
+		
+		return frame;
+		
+	}
+	
 }

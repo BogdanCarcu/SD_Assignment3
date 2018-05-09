@@ -22,7 +22,7 @@ public class Register {
 		 try {
 
 				HttpClient httpClient = new DefaultHttpClient();
-				String request = BASE + String.format("?token=%s&email=%s&password=%s", token, email, password);
+				String request = BASE + String.format("?token=%s&email=%s&password=%s", token, email, PasswordEncryptor.oneWayEncryption(password));
 			
 				HttpPut putRequest = new HttpPut(request);
 				HttpResponse response = httpClient.execute(putRequest);

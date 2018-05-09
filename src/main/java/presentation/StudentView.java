@@ -35,6 +35,7 @@ public class StudentView extends JFrame {
 	private JTextField git;
 	private JTextField remark;
 	private JTable table;
+	private final JFrame me;
 	
 	/**
 	 * Launch the application.
@@ -59,7 +60,9 @@ public class StudentView extends JFrame {
 		super("Student");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 737, 472);
-	
+		
+		me = this;
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -317,7 +320,21 @@ public class StudentView extends JFrame {
 		btnNewButton.setBounds(22, 188, 178, 23);
 		contentPane.add(btnNewButton);
 		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				me.setVisible(false);
+				me.dispose();
+				LoginView lv = new LoginView();
+				lv.getFrame().setVisible(true);
+				
+			}
+		});
+		btnLogout.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnLogout.setBounds(22, 388, 89, 23);
+		contentPane.add(btnLogout);
+		
 	
 	}
-
 }

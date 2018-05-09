@@ -22,7 +22,7 @@ public IUser login(String email, String password) {
 		try {
 			
 			HttpClient httpClient = new DefaultHttpClient();
-			String request = String.format("http://localhost:8080/login?email=%s&password=%s", email, password);
+			String request = String.format("http://localhost:8080/login?email=%s&password=%s", email, PasswordEncryptor.oneWayEncryption(password));
 			HttpGet loginRequest = new HttpGet(request);
 			
 			HttpResponse response = httpClient.execute(loginRequest);
